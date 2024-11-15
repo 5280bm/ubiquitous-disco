@@ -1,0 +1,35 @@
+<h1 class="">
+  Contact Us
+</h1>
+
+
+<%= turbo_frame_tag "contact_form" do %>
+<p class="mt-5 mb-10">
+  Hey, drop us a line. We'd love to hear from you. And we'll get back to you as soon as we can.
+</p>
+
+  <%= form_with model: @contact, url: contacts_path, autocomplete: "off", id: "new_contact", local: true do |form| %>
+    <div>
+      <%= form.label :name, class: "label" %>
+      <%= form.text_field :name, required: true, class: "field" %>
+    </div>
+    <div>
+      <%= form.label :email, class: "label" %>
+      <%= form.email_field :email, required: true, class: "field" %>
+    </div>
+    <div>
+      <%= form.label :message, class: "label" %>
+      <%= form.text_area :message, required: true, class: "min-h-36 field" %>
+    </div>
+    <div>
+      <%= form.submit 'Send Message', class: "btn-pink" %>
+    </div>
+  <% end %>
+
+<% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("form").forEach((form) => form.reset());
+});
+</script>

@@ -1,0 +1,47 @@
+<%# content for head %>
+
+
+<%= form_with(model: article) do |form| %>
+  <% if article.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "field" %>
+  </div>
+
+  <div>
+    <%= form.label :content, class: "label" %>
+   
+    <%= form.hidden_field :content, id: form.field_id(:content), value: form.object.content.try(:to_trix_html) || form.object.content %>
+  <rhino-editor
+    input="<%= form.field_id(:content) %>"
+    data-blob-url-template="<%= rails_service_blob_url(":signed_id", ":filename") %>"
+    data-direct-upload-url="<%= rails_direct_uploads_url %>"
+    id="syntax-highlight-editor"
+  ></rhino-editor>
+  </div>
+
+  <div>
+    <%= form.label :pubdate, class: "label" %>
+    <%= form.date_field :pubdate, class: "field" %>
+  </div>
+
+  <div class="flex flex-row">
+    <%= form.label "Published :", class: "label mr-2" %>
+    <%= form.checkbox :published, type: "checkbox", class: "h-4 w-4 bg-slate-300 dark:bg-slate-700 rounded-xl mt-2 border-4 border-slate-400 focus:outline-none focus:ring-offset-0 focus:ring-1 focus:ring-slate-100 checked:bg-pink-500 checked:enabled:bg-pink-500 checked:border-0" %>
+  </div>
+
+  <div class="mt-2 w-full flex justify-end">
+    <%= form.submit class: "btn-pink" %>
+  </div>
+<% end %>

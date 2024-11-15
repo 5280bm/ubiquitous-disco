@@ -1,0 +1,32 @@
+<%= form_with(model: series) do |form| %>
+  <% if series.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(series.errors.count, "error") %> prohibited this series from being saved:</h2>
+
+      <ul>
+        <% series.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, class: "field" %>
+  </div>
+
+  <div>
+    <%= form.label :description, class: "label" %>
+    <%= form.textarea :description, class: "field" %>
+  </div>
+  <%# add image %>
+  <div>
+    <%= form.label :image, class: "label" %>
+    <%= form.file_field :image, class: "field" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn-pink" %>
+  </div>
+<% end %>

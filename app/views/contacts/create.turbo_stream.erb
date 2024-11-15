@@ -1,0 +1,12 @@
+
+
+<%= turbo_stream.replace "contact_form" do %>
+  <div id="flash" class="flash-message success">
+    Message sent successfully! We will get back to you as soon as possible.
+  </div>
+  
+<% end %>
+
+<script>
+  document.getElementById("new_contact").reset();
+</script>

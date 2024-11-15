@@ -1,0 +1,36 @@
+<!-- app/views/shared/_navbar.html.erb -->
+<nav data-controller="dropdown" class="bg-pink-600 p-4">
+  <div class="container flex justify-between items-center mx-auto max-w-6xl">
+		<%= link_to root_path do %>
+    <div class="text-white text-4xl font-black tracking-tight -skew-y-2 drop-shadow-sm bg-slate-600/50 dark:bg-slate-800/50 px-5 py-1 hover:text-cyan-400 hover:bg-slate-700/75 dark:hover:bg-slate-800/75 hover:shadow-lg hover:shadow-pink-400/50">railscoder</div>
+		<% end %>
+    <button 
+      data-action="click->dropdown#toggle"
+      class="text-white md:hidden"
+      aria-label="Open Menu"
+    >
+      <!-- Menu icon (hamburger icon for mobile) -->
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <!-- Links Container -->
+    <div 
+      class="hidden md:flex space-x-4 tracking-tight"
+    >
+      
+      <%= link_to "Articles", articles_path, class: "text-white font-semibold hover:bg-slate-700/50 px-2 py-1 rounded-md hover:shadow-lg hover:shadow-pink-400/50" %>
+      <%= link_to "About", articles_path, class: "text-white font-semibold hover:bg-slate-700/50 px-2 py-1 rounded-md hover:shadow-lg hover:shadow-pink-400/50" %>
+      <%= link_to "Contact", contact_path, class: "text-white font-semibold hover:bg-slate-700/50 px-2 py-1 rounded-md hover:shadow-lg hover:shadow-pink-400/50" %>
+    </div>
+  </div>
+  <!-- Mobile Menu Links -->
+  <div 
+    data-dropdown-target="menu" 
+    class="hidden md:hidden bg-slate-800/50 rounded-md space-y-2 p-4 mt-5 tracking-tight font-semibold"
+  >
+    <a href="#home" class="block text-white hover:text-cyan-400">Home</a>
+    <a href="#about" class="block text-white hover:text-cyan-400">About</a>
+    <a href="#contact" class="block text-white hover:text-cyan-400">Contact</a>
+  </div>
+</nav>

@@ -66,4 +66,4 @@ end
 
 # User Gems
 gem "postmark-rails", "~> 0.22.1"
-gem "mailgun-ruby", "~> 1.2", ">= 1.2.15"
+gem "mailgun-ruby", "~> 1.2"
